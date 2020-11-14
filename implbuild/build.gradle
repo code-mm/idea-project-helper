@@ -1,6 +1,9 @@
 import java.text.SimpleDateFormat
 
-apply plugin: 'com.android.library'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
 
 android {
     compileSdkVersion 30
@@ -21,10 +24,21 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             // 写入固件信息
-            resValue("string", "com_ms_${rootProject.name.toLowerCase().replace("-", "_")}_name", rootProject.name)
-            resValue("string", "com_ms_${rootProject.name.toLowerCase().replace("-", "_")}_version", rootProject.ext._version)
-            resValue("string", "com_ms_${rootProject.name.toLowerCase().replace("-", "_")}_dependencies", "com.ms:$rootProject.name:$rootProject.ext._version")
-            resValue("string", "com_ms_${rootProject.name.toLowerCase().replace("-", "_")}_release_date", new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z").format(new Date()).toString())
+            buildConfigField "String", "name".toUpperCase(), "\"${rootProject.name}\""
+            buildConfigField "String", "version".toUpperCase(), "\"${System.getenv("MAVEN_PUBLISH_VERSION")}\""
+            buildConfigField "String", "dependencies".toUpperCase(), "\"com.ms:$rootProject.name:${System.getenv("MAVEN_PUBLISH_VERSION")}\""
+            buildConfigField "String", "release_date".toUpperCase(), "\"${new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z").format(new Date()).toString()}\""
+        }
+
+        debug {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            // 写入固件信息
+            buildConfigField "String", "name".toUpperCase(), "\"${rootProject.name}\""
+            buildConfigField "String", "version".toUpperCase(), "\"${System.getenv("MAVEN_PUBLISH_VERSION")}\""
+            buildConfigField "String", "dependencies".toUpperCase(), "\"com.ms:$rootProject.name:${System.getenv("MAVEN_PUBLISH_VERSION")}\""
+            buildConfigField "String", "release_date".toUpperCase(), "\"${new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS Z").format(new Date()).toString()}\""
+
         }
     }
 
@@ -37,23 +51,24 @@ android {
         abortOnError false
     }
 
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
     testOptions {
         unitTests {
             includeAndroidResources = true
         }
     }
-
-
 }
 
 dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     compileOnly 'androidx.appcompat:appcompat:1.2.0'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
-
-    api "com.ms:android-module-super:latest-release"
+    api "${System.getenv("MAVEN_PUBLISH_GROUP")}:android-module-framework:${System.getenv("MAVEN_PUBLISH_VERSION")}"
 }
 
 apply from: "./maven_publish.gradle"

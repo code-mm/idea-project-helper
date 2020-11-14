@@ -32,8 +32,7 @@ public class WindowsUpdatePublish {
                 BufferedWriter out = null;
                 try {
                     out = new BufferedWriter(new FileWriter(file1.getPath(), false));
-                    out.write("gradlew clean sdk:publishToMavenLocal\n" +
-                            "gradlew clean sdk:publish");
+                    out.write("gradlew clean sdk:publishToMavenLocal && gradlew sdk:publish");
                     out.flush();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -58,8 +57,7 @@ public class WindowsUpdatePublish {
                 BufferedWriter out = null;
                 try {
                     out = new BufferedWriter(new FileWriter(it.getPath(), false));
-                    out.write("gradlew clean sdk:publishToMavenLocal\n" +
-                            "gradlew clean sdk:publish");
+                    out.write("gradlew clean sdk:publishToMavenLocal && gradlew sdk:publish");
                     out.flush();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -71,7 +69,7 @@ public class WindowsUpdatePublish {
 
     public static void main(String[] args) {
 
-        searchAdd("D:/src/gitee/ms-android/");
+        searchAdd("D:/src/gitee/ms-android/module/internal/");
     }
 
 }

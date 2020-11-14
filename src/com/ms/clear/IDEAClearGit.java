@@ -6,7 +6,7 @@ import java.io.File;
 
 
 /**
- * 清楚IDEA中的.idea 和 .gradle 以及构建的 build
+ * 删除 IDEA项目中的中的.git
  */
 public class IDEAClearGit {
 
@@ -29,7 +29,7 @@ public class IDEAClearGit {
 
     public static void main(String[] args) {
         // 传入项目路径
-        search("D:/src/gitee/ms-android/");
+        search("D:/src/gitee/ms-android/module/internal/");
     }
 
 }

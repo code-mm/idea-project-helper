@@ -1,34 +1,32 @@
-package com.ms.project;
+package com.ms.git.gitpush;
 
 import com.ms.utils.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
 
-public class ProjectBuildGradleFile {
-
-
-    public static void search(String path) {
-
+/**
+ * gitupdate.bat 发布
+ */
+public class GitPush {
+    private static void search(String path) {
         File file = new File(path);
         File[] files = file.listFiles();
-
         for (File it : files) {
             if (it.isDirectory()) {
                 search(it.getPath());
             }
-            if (it.getName().startsWith("android-module-")) {
-                File file1 = new File(it.getParent() + "/build.gradle");
-                if (!file1.exists()) {
+            if (it.getParentFile().getName().startsWith("android-module-impl-")) {
+                File fileTemp = new File(it.getParent() + "/gitupdate.bat");
+
+                if (fileTemp.exists()) {
                     try {
-                        file1.createNewFile();
+                        fileTemp.createNewFile();
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
                 }
-            }
-            if (it.getName().equals("build.gradle")&&it.getParentFile().getName().startsWith("android-module-")) {
-                FileUtils.copyFileByStream("projectbuild/build.gradle", it.getPath());
+                FileUtils.copyFileByStream("gitupdate.bat", fileTemp.getPath());
             }
         }
     }

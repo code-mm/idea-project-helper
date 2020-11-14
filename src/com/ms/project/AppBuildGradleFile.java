@@ -25,6 +25,8 @@ public class AppBuildGradleFile {
     }
 
     public static void main(String[] args) {
-        search("D:/src/gitee/ms-android/");
+
+        String path = "D:/src/gitee/ms-android/module/internal/";
+        search(path);
     }
 }

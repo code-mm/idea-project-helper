@@ -23,7 +23,7 @@ public class ModuleImplDependencies {
     }
 
     public static void main(String[] args) {
-        search("D:/src/gitee/ms-android/");
+        search("D:/src/gitee/ms-android/module/internal/");
     }
 
 }

@@ -55,6 +55,6 @@ public class GradleVersion {
 
     public static void main(String[] args) {
         // 传入项目路径
-        search("D:/src/gitee/ms-android/");
+        search("D:/src/gitee/ms-android/module/internal/");
     }
 }

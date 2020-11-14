@@ -1,4 +1,4 @@
-package com.ms.project;
+package com.ms.git;
 
 import java.io.*;
 
@@ -9,7 +9,7 @@ public class UpdateGitignore {
         File file = new File(fileName);
         Long filelength = file.length();
         byte[] filecontent = new byte[filelength.intValue()];
-        FileInputStream in=null;
+        FileInputStream in = null;
         try {
             in = new FileInputStream(file);
             in.read(filecontent);
@@ -25,6 +25,7 @@ public class UpdateGitignore {
             }
         }
     }
+
     public static void search(String path) {
 
         File file = new File(path);
@@ -34,14 +35,8 @@ public class UpdateGitignore {
             if (it.isDirectory()) {
                 search(it.getPath());
             }
-
-
             if (it.getName().equals(".gitignore")) {
                 System.out.println(it.getPath());
-//                String s = readToString(it.getPath());
-//
-//                System.out.println(s);
-
                 BufferedWriter out = null;
                 try {
                     out = new BufferedWriter(new FileWriter(it.getPath(), false));
@@ -64,18 +59,12 @@ public class UpdateGitignore {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-
             }
-
-
         }
-
     }
 
     public static void main(String[] args) {
         // 传入项目路径
-        search("D:/src/gitee/ms-android/");
+        search("D:/src/gitee/ms-android/module/internal/");
     }
-
 }

@@ -90,7 +90,7 @@ public class SDKMavenPublish {
 //maven_publish.gradle
 
 
-        search("D:/src/gitee/ms-android/");
+        search("D:/src/gitee/ms-android/module/internal/");
     }
 
 }

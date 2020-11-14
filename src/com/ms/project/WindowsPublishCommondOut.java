@@ -15,7 +15,7 @@ public class WindowsPublishCommondOut {
             }
 
             if (it.getName().equals("publish.bat")) {
-                System.out.println("cd "+ it.getParent() +" && publish.bat");
+                System.out.println("start cd "+ it.getParent() +" && publish.bat\n");
             }
 
         }
@@ -24,7 +24,7 @@ public class WindowsPublishCommondOut {
 
     public static void main(String[] args) {
 
-        search("D:/src/gitee/ms-android/");
+        search("D:/src/gitee/ms-android/module/internal/");
 
     }
 }
