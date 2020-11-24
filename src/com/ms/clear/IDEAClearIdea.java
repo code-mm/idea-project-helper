@@ -28,6 +28,6 @@ public class IDEAClearIdea {
 
     public static void main(String[] args) {
         // 传入项目路径
-        search("D:/src/gitee/ms-android/module/internal/");
+        search("D:\\src\\aliyun\\shuangyang\\android\\android-modules\\");
     }
 }
