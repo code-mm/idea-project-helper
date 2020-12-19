@@ -1,13 +1,14 @@
-package com.ms.project;
+package com.ms.android.clear;
 
 import com.ms.utils.FileUtils;
 
 import java.io.File;
 
+
 /**
- * app 下的build.gradle
+ * 删除 IDEA项目中的中的.git
  */
-public class AppBuildGradleFile {
+public class IDEAClearGit {
 
     public static void search(String path) {
 
@@ -18,15 +19,17 @@ public class AppBuildGradleFile {
             if (it.isDirectory()) {
                 search(it.getPath());
             }
-            if (it.getName().equals("build.gradle")&&it.getParentFile().getName().equals("app")) {
-                FileUtils.copyFileByStream("appbuild/build.gradle", it.getPath());
+            if (it.getName().equals(".git")) {
+                System.out.println(it.getPath());
+                FileUtils.deleteDir(it.getPath());
             }
         }
+
     }
 
     public static void main(String[] args) {
-
-        String path = "D:/src/gitee/ms-android/module/internal/";
-        search(path);
+        // 传入项目路径
+        search("D:\\src\\aliyun\\shuangyang\\shuangyang-android\\modules\\");
     }
+
 }

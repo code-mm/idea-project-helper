@@ -1,11 +1,14 @@
-package com.ms.project;
+package com.ms.android.clear;
 
 import com.ms.utils.FileUtils;
 
 import java.io.File;
 
-public class SdkBuildGradleFile {
 
+/**
+ * 删除 IDEA项目中的中的.idea
+ */
+public class IDEAClearIdea {
 
     public static void search(String path) {
 
@@ -16,13 +19,15 @@ public class SdkBuildGradleFile {
             if (it.isDirectory()) {
                 search(it.getPath());
             }
-            if (it.getName().equals("build.gradle")&&it.getParentFile().getName().equals("sdk")) {
-                FileUtils.copyFileByStream("sdkbuild/build.gradle", it.getPath());
+            if (it.getName().equals(".idea")) {
+                System.out.println(it.getPath());
+                FileUtils.deleteDir(it.getPath());
             }
         }
     }
 
     public static void main(String[] args) {
-        search("D:/src/gitee/ms-android/module/internal");
+        // 传入项目路径
+        search("D:\\src\\aliyun\\shuangyang\\shuangyang-android\\modules\\");
     }
 }

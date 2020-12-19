@@ -1,4 +1,4 @@
-package com.ms.git;
+package com.ms.android.git;
 
 import java.io.*;
 

@@ -1,8 +1,11 @@
-package com.ms.project;
+package com.ms.android.project;
+
+import com.ms.utils.FileUtils;
 
 import java.io.File;
 
-public class WindowsPublishCommondOut {
+public class ModuleImplDependencies {
+
 
     public static void search(String path) {
 
@@ -13,18 +16,14 @@ public class WindowsPublishCommondOut {
             if (it.isDirectory()) {
                 search(it.getPath());
             }
-
-            if (it.getName().equals("publish.bat")) {
-                System.out.println("start cd "+ it.getParent() +" && publish.bat\n");
+            if (it.getName().equals("build.gradle")&&it.getParentFile().getName().equals("sdk")&&it.getParentFile().getParentFile().getName().startsWith("android-module-impl")) {
+                FileUtils.copyFileByStream("implbuild/build.gradle", it.getPath());
             }
-
         }
-
     }
 
     public static void main(String[] args) {
-
         search("D:/src/gitee/ms-android/module/internal/");
-
     }
+
 }

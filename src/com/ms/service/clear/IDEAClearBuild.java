@@ -1,4 +1,4 @@
-package com.ms.clear;
+package com.ms.service.clear;
 
 import com.ms.utils.FileUtils;
 
@@ -24,6 +24,6 @@ public class IDEAClearBuild {
 
     public static void main(String[] args) {
         // 传入项目路径
-        search("D:\\src\\aliyun\\shuangyang\\android\\android-modules\\");
+        search("D:\\src\\aliyun\\shuangyang\\shuangyang-service\\service\\");
     }
 }

@@ -1,14 +1,8 @@
-package com.ms.clear;
-
-import com.ms.utils.FileUtils;
+package com.ms.android.project;
 
 import java.io.File;
 
-
-/**
- * 删除 IDEA项目中的中的.gradle
- */
-public class IDEAClearGradle {
+public class WindowsPublishCommondOut {
 
     public static void search(String path) {
 
@@ -20,8 +14,8 @@ public class IDEAClearGradle {
                 search(it.getPath());
             }
 
-            if (it.getName().equals(".gradle")) {
-                FileUtils.deleteDir(it.getPath());
+            if (it.getName().equals("publish.bat")) {
+                System.out.println("start cd "+ it.getParent() +" && publish.bat\n");
             }
 
         }
@@ -29,8 +23,8 @@ public class IDEAClearGradle {
     }
 
     public static void main(String[] args) {
-        // 传入项目路径
-        search("D:\\src\\aliyun\\shuangyang\\android\\android-modules\\");
-    }
 
+        search("D:/src/gitee/ms-android/module/internal/");
+
+    }
 }
