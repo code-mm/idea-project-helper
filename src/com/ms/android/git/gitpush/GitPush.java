@@ -6,7 +6,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * gitupdate.bat 发布
+ * gitpush.bat 发布
  */
 public class GitPush {
     private static void search(String path) {
@@ -16,22 +16,27 @@ public class GitPush {
             if (it.isDirectory()) {
                 search(it.getPath());
             }
-            if (it.getParentFile().getName().startsWith("android-module-impl-")) {
-                File fileTemp = new File(it.getParent() + "/gitupdate.bat");
+            System.out.println(it.getPath());
 
-                if (fileTemp.exists()) {
-                    try {
-                        fileTemp.createNewFile();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-                FileUtils.copyFileByStream("gitupdate.bat", fileTemp.getPath());
-            }
+
+
+
+//            if (it.getParentFile().getName().startsWith("android-module-impl-")) {
+//                File fileTemp = new File(it.getParent() + "/gitpush.bat");
+//
+//                if (!fileTemp.exists()) {
+//                    try {
+//                        fileTemp.createNewFile();
+//                    } catch (IOException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//                FileUtils.copyFileByStream("gitpush.bat", fileTemp.getPath());
+//            }
         }
     }
 
     public static void main(String[] args) {
-        search("D:/src/gitee/ms-android/module/internal/");
+        search("D:/src/shuangyangad/");
     }
 }

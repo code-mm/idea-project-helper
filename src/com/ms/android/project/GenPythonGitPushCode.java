@@ -15,7 +15,7 @@ public class GenPythonGitPushCode {
         System.out.println("import os");
         for (File it : files) {
             System.out.println("print(\"START==========" + it.getName() + "==========\")");
-            System.out.println("os.system( \"cd " + it.getPath().replace("\\", "/") + "  && gitupdate.bat \")");
+            System.out.println("os.system( \"cd " + it.getPath().replace("\\", "/") + "  && gitpush.bat \")");
             System.out.println("print(\"END==========" + it.getName() + "==========\")");
         }
     }
@@ -26,7 +26,7 @@ public class GenPythonGitPushCode {
         System.out.println("import os");
         for (File it : files) {
             System.out.println("print(\"START==========" + it.getName() + "==========\")");
-            System.out.println("os.system( \"cd " + it.getPath().replace("\\", "/") + "  && gitupdate.bat \")");
+            System.out.println("os.system( \"cd " + it.getPath().replace("\\", "/") + "  && gitpush.bat \")");
             System.out.println("print(\"END==========" + it.getName() + "==========\")");
         }
     }
@@ -38,7 +38,7 @@ public class GenPythonGitPushCode {
         System.out.println("import os");
         for (File it : files) {
             System.out.println("print(\"START==========" + it.getName() + "==========\")");
-            System.out.println("os.system( \"cd " + it.getPath().replace("\\", "/") + "  && gitupdate.bat \")");
+            System.out.println("os.system( \"cd " + it.getPath().replace("\\", "/") + "  && gitpush.bat \")");
             System.out.println("print(\"END==========" + it.getName() + "==========\")");
         }
     }
