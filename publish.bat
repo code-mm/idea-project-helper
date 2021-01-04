@@ -1,0 +1,1 @@
+gradlew clean  -Dfile.encoding=UTF-8 publishToMavenLocal && gradlew publish
