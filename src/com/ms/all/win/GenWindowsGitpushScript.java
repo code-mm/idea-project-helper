@@ -1,13 +1,10 @@
-package com.ms.all;
-
-import com.ms.utils.FileUtils;
+package com.ms.all.win;
 
 import java.io.File;
 
-/**
- * 删除 IDEA项目中的中的build
- */
-public class IDEAClearBuild {
+public class GenWindowsGitpushScript {
+
+
     public static void search(String path) {
         File file = new File(path);
         File[] files = file.listFiles();
@@ -15,15 +12,18 @@ public class IDEAClearBuild {
             if (it.isDirectory()) {
                 search(it.getPath());
             }
-            if (it.getName().equals("build")) {
-                System.out.println(it.getPath());
-                FileUtils.deleteDir(it.getPath());
+            if (it.getName().equals("settings.gradle")) {
+                //System.out.println(it.getPath());
+
+                System.out.println("os.system(\"cd " + it.getParent().replace("\\", "/") + " && gitpush.bat\");");
+
             }
         }
     }
 
+
     public static void main(String[] args) {
-        // 传入项目路径
+        System.out.println("import os");
         search("D:\\src\\shuangyangad\\");
     }
 }

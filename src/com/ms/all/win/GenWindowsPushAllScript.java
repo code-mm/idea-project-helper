@@ -1,10 +1,8 @@
-package com.ms.all;
-
-import com.ms.utils.FileUtils;
+package com.ms.all.win;
 
 import java.io.File;
 
-public class DeleteGitUpdate {
+public class GenWindowsPushAllScript {
 
 
     public static void search(String path) {
@@ -14,18 +12,18 @@ public class DeleteGitUpdate {
             if (it.isDirectory()) {
                 search(it.getPath());
             }
-            if (it.getName().equals("gitupdate.bat")||it.getName().equals("gitupdate.sh")) {
-                System.out.println(it.getPath());
-                it.delete();
 
-
+            if(it.getName().equals("gitpush.bat")){
+                System.out.println("os.system(\"cd " + it.getParent().replace("\\", "/") + " && gitpush.bat\");");
             }
+
+
         }
     }
 
 
     public static void main(String[] args) {
-
+        System.out.println("import os");
         search("D:\\src\\shuangyangad\\");
     }
 }

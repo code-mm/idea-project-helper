@@ -1,4 +1,4 @@
-package com.ms.all;
+package com.ms.all.win;
 
 import com.ms.utils.FileUtils;
 

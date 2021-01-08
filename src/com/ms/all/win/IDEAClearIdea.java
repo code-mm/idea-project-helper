@@ -1,4 +1,4 @@
-package com.ms.all;
+package com.ms.all.win;
 
 import com.ms.utils.FileUtils;
 
@@ -6,9 +6,9 @@ import java.io.File;
 
 
 /**
- * 删除 IDEA项目中的中的.gradle
+ * 删除 IDEA项目中的中的.idea
  */
-public class IDEAClearGradle {
+public class IDEAClearIdea {
 
     public static void search(String path) {
 
@@ -19,18 +19,15 @@ public class IDEAClearGradle {
             if (it.isDirectory()) {
                 search(it.getPath());
             }
-
-            if (it.getName().equals(".gradle")) {
+            if (it.getName().equals(".idea")) {
+                System.out.println(it.getPath());
                 FileUtils.deleteDir(it.getPath());
             }
-
         }
-
     }
 
     public static void main(String[] args) {
         // 传入项目路径
         search("D:\\src\\shuangyangad\\");
     }
-
 }

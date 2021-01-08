@@ -1,33 +1,29 @@
-package com.ms.all;
-
-import com.ms.utils.FileUtils;
+package com.ms.all.win;
 
 import java.io.File;
 
+public class GenWindowsPublishAllScript {
 
-/**
- * 删除 IDEA项目中的中的.idea
- */
-public class IDEAClearIdea {
 
     public static void search(String path) {
-
         File file = new File(path);
         File[] files = file.listFiles();
-
         for (File it : files) {
             if (it.isDirectory()) {
                 search(it.getPath());
             }
-            if (it.getName().equals(".idea")) {
-                System.out.println(it.getPath());
-                FileUtils.deleteDir(it.getPath());
+
+            if(it.getName().equals("gitpush.bat")){
+                System.out.println("os.system(\"cd " + it.getParent().replace("\\", "/") + " && publish.bat\");");
             }
+
+
         }
     }
 
+
     public static void main(String[] args) {
-        // 传入项目路径
+        System.out.println("import os");
         search("D:\\src\\shuangyangad\\");
     }
 }
